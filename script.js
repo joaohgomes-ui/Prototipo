@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Menu Hambúrguer para Dispositivos MOveis
+    // Menu Hambúrguer para Dispositivos Móveis
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
 
@@ -12,17 +12,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Scroll Suave para os Links Internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            // Fecha o menu mobile ao clicar em um link
-            if (navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-            }
-
             const targetId = this.getAttribute('href');
+
+            // Ignora se for apenas '#'
+            if (targetId === '#') return;
+
             const targetSection = document.querySelector(targetId);
 
             if (targetSection) {
+                e.preventDefault();
+
+                // Fecha o menu mobile ao clicar em um link
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+
                 targetSection.scrollIntoView({
                     behavior: 'smooth'
                 });
@@ -31,7 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Função para tratar clique de contratação
+// Função para tratar clique de contratação e redirecionar para o WhatsApp
 function contratarPlano(nomePlano) {
-    alert(`Você selecionou o ${nomePlano}! Redirecionando para o atendimento...`);
+    // ⚠️ ALTERE AQUI: Coloque o número real do WhatsApp com Código do País (55) + DDD + Número
+    const numeroWhatsapp = "5500999999999"; 
+
+    // Cria a mensagem personalizada
+    const mensagem = encodeURIComponent(`Olá! Tenho interesse em contratar o ${nomePlano}. Como posso prosseguir?`);
+
+    // Redireciona para o WhatsApp numa nova aba
+    window.open(`https://wa.me/${numeroWhatsapp}?text=${mensagem}`, '_blank');
 }
