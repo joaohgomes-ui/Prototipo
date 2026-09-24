@@ -146,8 +146,8 @@
                 <!-- Reparou nos links? Agora apontam de volta para o index.php -->
                 <a href="index.php#quem-somos">Quem somos</a>
                 <a href="index.php#planos">Planos</a>
-                <a href="index.php#servicos">Serviços</a>
-                <a href="index.php#porque-assinar">Porque assinar?</a>
+                <a href="servicos.php">Serviços</a>
+                <a href="porque-assinar.php">Porque assinar?</a>
                 <a href="contato.php">Contato</a>
             </nav>
         </div>
